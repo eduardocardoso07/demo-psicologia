@@ -1,0 +1,5 @@
+const menuBtn=document.getElementById("menuBtn");const nav=document.getElementById("nav");menuBtn.addEventListener("click",()=>nav.classList.toggle("active"));document.querySelectorAll("nav a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("active")));
+
+document.querySelectorAll(".faq-item button").forEach(button=>{button.addEventListener("click",()=>{const item=button.parentElement;document.querySelectorAll(".faq-item").forEach(other=>{if(other!==item)other.classList.remove("active")});item.classList.toggle("active")})});
+
+const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("show");observer.unobserve(entry.target)}})},{threshold:.12});document.querySelectorAll(".cards article,.steps>div,.about>div,.attendance").forEach(el=>{el.classList.add("animate");observer.observe(el)});
